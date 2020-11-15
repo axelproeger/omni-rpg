@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>{{ config('app.name') }} - @yield('title')</title>
+  <title>{{ Settings::get('app-title') }} - @yield('title')</title>
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">

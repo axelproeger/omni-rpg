@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>{{ config('app.name') }} - Login</title>
+  <title>{{ Settings::get('app-title') }} - Login</title>
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -41,10 +41,10 @@
                 <div class="col-lg-6">
                   <div class="p-5">
                     <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-1">{{ config('app.name') }}</h1>
+                      <h1 class="h4 text-gray-900 mb-1">{{ Settings::get('app-title') }}</h1>
                     </div>
                     <div class="text-center">
-                      <div class="text-gray-900 mb-4">{{ config('app.name2') }}</div>
+                      <div class="text-gray-900 mb-4">{{ Settings::get('app-subtitle') }}</div>
                     </div>
 
                     <form class="user" method="POST" action="{{ route('login') }}">
@@ -104,10 +104,8 @@
           </div>
 
           <div class="login--footer text-center">
-            <div>Copyright &copy; {{ now()->year }} {{ config('app.name') }} - {{ config('app.name2') }}</div>
-            <div>{{ config('app.name', 'Laravel') }} ist ein Fan-Projekt und verfolgt keine finanziellen Absichten.
-            </div>
-            <div>STAR TREK and related marks are trademarks of CBS Studios Inc.</div>
+            <div>&copy; {{ now()->year }} {{ Settings::get('app-title') }}</div>
+            <div>Powered by <a href="https://www.omni-rpg.de">Omni-RPG</a> Rollenspiel Software</div>
           </div>
         </div>
 

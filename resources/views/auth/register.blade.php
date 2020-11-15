@@ -41,17 +41,17 @@
                 <div class="col-lg-7">
                   <div class="p-5">
                     <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-1">{{ config('app.name') }}</h1>
+                      <h1 class="h4 text-gray-900 mb-1">{{ Settings::get('app-title') }}</h1>
                     </div>
                     <div class="text-center">
-                      <div class="text-gray-900 mb-4">{{ config('app.name2') }}</div>
+                      <div class="text-gray-900 mb-4">{{ Settings::get('app-subtitle') }}</div>
                     </div>
 
                     <hr>
 
                     <div class="text-left">
                       <div class="mb-2">
-                        Auf dieser Seite kannst du dich für {{ config('app.name') }} anmelden.<br>
+                        Auf dieser Seite kannst du dich für {{ Settings::get('app-title') }} anmelden.<br>
                         <b>Die Teilnahme am Rollenspiel ist kostenlos.</b>
                       </div>
                       <div class="mb-4">
@@ -145,10 +145,8 @@
           </div>
 
           <div class="login--footer text-center">
-            <div>Copyright &copy; {{ now()->year }} {{ config('app.name') }} - {{ config('app.name2') }}</div>
-            <div>{{ config('app.name', 'Laravel') }} ist ein Fan-Projekt und verfolgt keine finanziellen Absichten.
-            </div>
-            <div>STAR TREK and related marks are trademarks of CBS Studios Inc.</div>
+            <div>&copy; {{ now()->year }} {{ Settings::get('app-title') }}</div>
+            <div>Powered by <a href="https://www.omni-rpg.de">Omni-RPG</a> Rollenspiel Software</div>
           </div>
         </div>
 

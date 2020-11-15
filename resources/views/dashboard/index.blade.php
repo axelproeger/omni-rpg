@@ -21,22 +21,7 @@
     <div class="row">
 
       <div class="col">
-        Ey yau! Du bist eingeloggt und so. Ganz ganz starke Leistung!
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-<div class="card card-sm shadow mb-4">
-  <div class="card-body">
-    <div class="row">
-
-      <div class="col">
-
-        <img class="rounded-circle mr-3" src="images/pummeluff.png" alt="">
-        Diese Webseite ist <b>Pummeluff approved</b>. Uff uff!
+        
       </div>
 
     </div>
