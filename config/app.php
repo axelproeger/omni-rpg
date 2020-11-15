@@ -231,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'ActiveCharacter' => App\ActiveCharacter::class,
+        'Settings' => App\Settings::class,
 
     ],
 
