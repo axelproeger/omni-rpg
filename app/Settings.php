@@ -11,9 +11,9 @@ class Settings
      *
      * @return string
      */
-    public static function settings($key)
+    public static function get($key)
     {
-        return Cache::get('settings')->where('key', $key)->first()->value;
+        return Cache::get('AppSettings')->where('key', $key)->first()->value;
     }
 }
 
