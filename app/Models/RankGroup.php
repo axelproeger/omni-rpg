@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,7 +17,7 @@ class RankGroup extends Model
     ];
 
     public function ranks() {
-      return $this->hasMany('App\Rank');
+      return $this->hasMany('App\Models\Rank');
     }
 
 }

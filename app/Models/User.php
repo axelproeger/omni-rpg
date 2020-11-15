@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,7 +9,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Carbon;
-use App\Character;
+use App\Models\Character;
 
 class User extends Authenticatable
 {
@@ -64,7 +64,7 @@ class User extends Authenticatable
   public function characters()
   {
 
-    return $this->hasMany('App\Character')->where('active', true);
+    return $this->hasMany('App\Models\Character')->where('active', true);
   }
 
   public function active_character()

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Character;
-use App\User;
+use App\Models\Character;
+use App\Models\User;
 
 class CharacterAvatarController extends Controller
 {

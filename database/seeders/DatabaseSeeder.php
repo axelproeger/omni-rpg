@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\SettingsSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RanksTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(DepartmentTableSeeder::class);
+        $this->call(SettingsSeeder::class);
     }
 }

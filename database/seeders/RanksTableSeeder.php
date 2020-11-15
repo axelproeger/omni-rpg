@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Rank;
+use App\Models\Rank;
 
 class RanksTableSeeder extends Seeder
 {

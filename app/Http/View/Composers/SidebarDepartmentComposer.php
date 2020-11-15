@@ -2,7 +2,7 @@
 
 namespace App\Http\View\Composers;
 
-use App\Department;
+use App\Models\Department;
 use Illuminate\View\View;
 
 class SidebarDepartmentComposer

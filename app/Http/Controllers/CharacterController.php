@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Character;
+use App\Models\Character;
 
 class CharacterController extends Controller
 {
@@ -110,7 +110,7 @@ class CharacterController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  \App\Character  $rank
+   * @param  \App\Models\Character  $rank
    * @return \Illuminate\Http\Response
    */
   public function edit(Character $character)

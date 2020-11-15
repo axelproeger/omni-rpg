@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -56,12 +56,12 @@ class Character extends Model
 
   public function user()
   {
-    return $this->belongsTo('App\User');
+    return $this->belongsTo('App\Models\User');
   }
 
   public function rank()
   {
-    return $this->belongsTo('App\Rank');
+    return $this->belongsTo('App\Models\Rank');
   }
 
   // public function getAvatarAttribute($value)
@@ -110,12 +110,10 @@ class Character extends Model
 
   public function getAvatar($type = 'url')
   {
-    if($type == 'path')
-    {
-      return Storage::disk('public')->url('character_avatars/'. $this->avatar);
+    if ($type == 'path') {
+      return Storage::disk('public')->url('character_avatars/' . $this->avatar);
     }
 
     return $this->avatar;
   }
-
 }

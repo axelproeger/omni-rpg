@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\RankGroup;
+use App\Models\RankGroup;
 
 class RankGroupsTableSeeder extends Seeder
 {

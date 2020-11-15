@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Character;
-use App\User;
+use App\Models\Character;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
@@ -14,7 +14,7 @@ class CharacterPolicy
     /**
      * Determine whether the user can view any characters.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @return mixed
      */
     public function viewAny(User $user)
@@ -26,7 +26,7 @@ class CharacterPolicy
     /**
      * Determine whether the user can create characters.
      *
-     * @param  \App\User  $user
+     * @param  \App\Models\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -42,8 +42,8 @@ class CharacterPolicy
     /**
      * Determine whether the user can update the character.
      *
-     * @param  \App\User  $user
-     * @param  \App\Character  $character
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Character  $character
      * @return mixed
      */
     public function update(User $user, Character $character)
@@ -54,8 +54,8 @@ class CharacterPolicy
     /**
      * Determine whether the user can delete the character.
      *
-     * @param  \App\User  $user
-     * @param  \App\Character  $character
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Character  $character
      * @return mixed
      */
     public function delete(User $user, Character $character)
@@ -66,8 +66,8 @@ class CharacterPolicy
     /**
      * Determine whether the user can restore the character.
      *
-     * @param  \App\User  $user
-     * @param  \App\Character  $character
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Character  $character
      * @return mixed
      */
     public function restore(User $user, Character $character)
@@ -78,8 +78,8 @@ class CharacterPolicy
     /**
      * Determine whether the user can permanently delete the character.
      *
-     * @param  \App\User  $user
-     * @param  \App\Character  $character
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Character  $character
      * @return mixed
      */
     public function forceDelete(User $user, Character $character)
