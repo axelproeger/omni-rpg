@@ -14,7 +14,7 @@ class DepartmentTableSeeder extends Seeder
      */
     public function run()
     {
-        Department::create(['name' => 'Stafleet Command']);
-        Department::create(['name' => 'Staff Department']);
+        Department::create(['name' => 'Starfleet Command', 'slug' => 'starfleet-command']);
+        Department::create(['name' => 'Staff Department', 'slug' => 'staff-department']);
     }
 }

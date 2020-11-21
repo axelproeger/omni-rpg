@@ -17,5 +17,6 @@ class SettingsSeeder extends Seeder
         AppSettings::create(['key' => 'app-active', 'value' => '1']);
         AppSettings::create(['key' => 'app-title', 'value' => 'Omni-RPG']);
         AppSettings::create(['key' => 'app-subtitle', 'value' => 'Rollenspiel neu gedacht.']);
+        AppSettings::create(['key' => 'rs-timediff', 'value' => '370']);
     }
 }

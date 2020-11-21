@@ -151,12 +151,12 @@
 
           <div class="media">
             <img class="img-fluid rounded-circle topbar-avatar mr-2"
-              src="{{ Auth::user()->active_character()->getAvatar('path') }}" alt="">
+              src="{{ Auth::user()->activeCharacter()->getAvatarPath() }}" alt="">
             <div class="media-body">
               <div class="small text-gray-500">aktiver Charakter</div>
               <div class="text-gray-900 font-weight-bold">
-                <span class="text-gray-700">{{ Auth::user()->active_character()->getRankShortName() }}</span>
-                {{ Auth::user()->active_character()->getFullNameAttribute() }}
+                <span class="text-gray-700">{{ Auth::user()->activeCharacter()->getRankShortName() }}</span>
+                {{ Auth::user()->activeCharacter()->getFullNameAttribute() }}
               </div>
             </div>
           </div>
@@ -169,11 +169,11 @@
     <div class="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="charDropdown">
 
       @foreach (Auth::user()->characters as $character)
-      @if(Auth::user()->active_character()->slug != $character->slug)
+      @if(Auth::user()->activeCharacter()->slug != $character->slug)
       <a class="dropdown-item d-flex align-items-center"
         href="{{ url('/characters/'.$character->slug.'/set-active') }}">
         <div class="dropdown-list-image mr-3">
-          <img class="img-fluid rounded-circle mr-1" src="{{ $character->getAvatar('path') }}" alt="">
+          <img class="img-fluid rounded-circle mr-1" src="{{ $character->getAvatarPath() }}" alt="">
         </div>
         <div class="font-weight-bold">
           <div class="text-truncate"><span class="text-gray-700">{{ $character->getRankShortName() }}</span>

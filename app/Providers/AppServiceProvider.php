@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+
     }
 
     /**
@@ -24,10 +25,12 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    
+
     {
         if (Schema::hasTable('app_settings')) {
             Cache::forever('AppSettings', \App\Models\AppSettings::all());
         }
+
+        Carbon::setLocale(config('app.locale'));
     }
 }

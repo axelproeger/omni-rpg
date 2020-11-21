@@ -3,6 +3,14 @@ img.character-avatar {
   max-height: 60px;
 }
 
+img.character-avatar-large {
+    max-height: 300px;
+}
+
 ul.list-group.character-list > li.list-group-item.row {
   display: flex;
+}
+
+.profile-head {
+    font-size: 0.8rem;
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Settings;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
@@ -12,7 +13,7 @@ use function PHPSTORM_META\type;
 class Character extends Model
 {
 
-  /**
+    /**
    * Get the route key for the model.
    *
    * @return string
@@ -54,42 +55,68 @@ class Character extends Model
     'user_id'
   ];
 
-  public function user()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
   {
     return $this->belongsTo('App\Models\User');
   }
 
-  public function rank()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function rank()
   {
     return $this->belongsTo('App\Models\Rank');
   }
 
-  // public function getAvatarAttribute($value)
-  // {
-  //   return Storage::disk('public')->url('character_avatars/'. $value);
-  // }
+  public function positions()
+  {
+      return $this->hasMany('\App\Models\Positionable', 'character_id');
+  }
 
-  public function getFullNameAttribute()
+    /**
+     * @return string
+     */
+    public function getFullNameAttribute()
   {
     return "{$this->firstname} {$this->lastname}";
   }
 
-  public function getBirthdayAttribute($value)
+    /**
+     * @param $value
+     * @return string
+     */
+    public function getBirthdayAttribute($value)
   {
-    return Carbon::parse($value)->format('d.m.Y') . " (" . Carbon::parse($value)->age . ")";
+
+    return Carbon::parse($value)->format('d.m.Y') . " (" . Carbon::parse($value)->add(-Settings::get('rs-timediff'), 'year')->age . ")";
   }
 
-  public function getHeightAttribute($value)
+    /**
+     * @param $value
+     * @return string
+     */
+    public function getHeightAttribute($value)
   {
     return "{$value} cm";
   }
 
-  public function getWeightAttribute($value)
+    /**
+     * @param $value
+     * @return string
+     */
+    public function getWeightAttribute($value)
   {
     return "{$value} kg";
   }
 
-  public function getCvAttribute($value)
+    /**
+     * @param $value
+     * @return \Illuminate\Support\HtmlString|string
+     */
+    public function getCvAttribute($value)
   {
     if (empty($value)) {
       return "Hier gibt es (noch) nichts zu sehen.";
@@ -98,22 +125,61 @@ class Character extends Model
     return Markdown::parse($value);
   }
 
-  public function getRankName()
+    /**
+     * @return false
+     */
+    public function getRankName()
   {
     return ($this->rank) ? $this->rank->name : false;
   }
 
-  public function getRankShortName()
+    /**
+     * @return false
+     */
+    public function getRankShortName()
   {
     return ($this->rank) ? $this->rank->short_name : false;
   }
 
-  public function getAvatar($type = 'url')
+    /**
+     * @return bool
+     */
+    public function hasAvatar()
   {
-    if ($type == 'path') {
-      return Storage::disk('public')->url('character_avatars/' . $this->avatar);
+    if($this->avatar && Storage::disk('public')->exists('character_avatars/' . $this->avatar)) {
+        return true;
     }
 
-    return $this->avatar;
-  }
+    return false;
+}
+
+    /**
+     * @return mixed
+     */
+    public function getAvatarPath()
+    {
+
+        if($this->hasAvatar()) {
+            return Storage::disk('public')->url('character_avatars/' . $this->avatar);
+        }
+
+        return Storage::disk('public')->url('character_avatars/default.png');
+
+    }
+
+    /**
+     * @return mixed|string
+     */
+    public function getAvatarFilename()
+    {
+
+        if($this->hasAvatar()) {
+
+            return $this->avatar;
+
+        }
+
+        return 'default.png';
+
+    }
 }

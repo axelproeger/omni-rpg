@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use App\Models\Character;
 
@@ -96,12 +97,12 @@ class CharacterController extends Controller
     return redirect('/characters');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
+    /**
+     * Display the specified resource.
+     *
+     * @param Character $character
+     * @return Response
+     */
   public function show(Character $character)
   {
     return view('characters.show', ['character' => $character]);
@@ -111,7 +112,7 @@ class CharacterController extends Controller
    * Show the form for editing the specified resource.
    *
    * @param  \App\Models\Character  $rank
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
   public function edit(Character $character)
   {

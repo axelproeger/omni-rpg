@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
@@ -9,11 +9,18 @@
     <div class="sidebar-brand-text mx-3">{{ Settings::get('app-title') }}</div>
   </a>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <div class="sidebar-time text-white text-center">
+        {{ \Carbon\Carbon::now()->add(Settings::get('rs-timediff'), 'year')->isoFormat('dddd, DD.MM.YYYY HH:mm') }}
+    </div>
+
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item @if (request()->route()->getName() == 'home') active @endif">
+  <li class="nav-item @if (request()->route()->getName() == 'dashboard') active @endif">
     <a class="nav-link" href="{{ url('/dashboard') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
@@ -21,15 +28,12 @@
 
   <hr class="sidebar-divider">
 
-  @include('sidebar.partials.department')
+    @include('sidebar.partials.department')
 
-  <div class="sidebar-heading">
-    Einheiten
-  </div>
+    @include('sidebar.partials.unit')
+
 
   @if (Auth::user()->hasRole(['superadmin', 'admin']))
-
-  <hr class="sidebar-divider">
 
   <div class="sidebar-heading">
     Admin

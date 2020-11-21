@@ -78,7 +78,7 @@
                         @foreach ($characters as $character)
 
                         @include('characters.partials.character_list', [
-                        'avatar_url' => $character->getAvatar('path'),
+                        'avatar_url' => $character->getAvatarPath(),
                         'rank' => $character->getRankName(),
                         'rank_short_name' => $character->getRankShortName(),
                         'firstname' => $character->firstname,

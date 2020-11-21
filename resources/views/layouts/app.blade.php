@@ -3,72 +3,72 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>{{ Settings::get('app-title') }} - @yield('title')</title>
+    <title>{{ Settings::get('app-title') }} - @yield('title')</title>
 
-  <!-- CSRF Token -->
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <!-- Scripts -->
-  <script src="{{ mix('js/app.js') }}" defer></script>
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
-  <!-- Styles -->
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <!-- Styles -->
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
 
-  <!-- Page Wrapper -->
-  <div id="app">
+<!-- Page Wrapper -->
+<div id="app">
 
-    @include('sidebar.sidebar')
+@include('sidebar.sidebar')
 
-    <!-- Content Wrapper -->
+<!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-      <!-- Main Content -->
-      <div id="content">
+        <!-- Main Content -->
+        <div id="content">
 
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
 
-          @include('layouts.topbar')
+                @include('layouts.topbar')
 
-        </nav>
-        <!-- End of Topbar -->
+            </nav>
+            <!-- End of Topbar -->
 
-        <div class="container-fluid">
+            <div class="container-fluid">
 
-          @include('partials.flash')
+                @yield('content')
 
-          @yield('content')
+            </div>
 
         </div>
-
-      </div>
-      <!-- End of Main Content -->
+        <!-- End of Main Content -->
 
     </div>
     <!-- End of Content Wrapper -->
 
-  </div>
-  <!-- End of Page Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
-  </a>
+</a>
+
+@include('partials.flash')
 
 </body>
 

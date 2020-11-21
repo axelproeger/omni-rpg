@@ -15,9 +15,10 @@ class ActiveCharacterController extends Controller
 
     Auth::user()->setActiveCharacter($character);
 
+    $this->flashSuccess('OK', 'Charakter gewechselt.');
+
     return redirect()
-      ->back()
-      ->withMessage('success|Charakter gewechselt.');
+      ->back();
   }
 
 }

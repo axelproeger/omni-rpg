@@ -14,8 +14,8 @@ class CharacterAvatarController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Character $character
+     * @return Response
      */
     public function show(Character $character)
     {
@@ -26,7 +26,8 @@ class CharacterAvatarController extends Controller
     /**
      * Update the avatar for the character.
      *
-     * @param  Request  $request
+     * @param Request $request
+     * @param Character $character
      * @return Response
      */
     public function update(Request $request, Character $character)
@@ -36,8 +37,8 @@ class CharacterAvatarController extends Controller
             'avatar' => ['required', 'mimes:jpeg,jpg,png', 'dimensions:ratio=1/1', 'max:2048']
         ]);
 
-        if ($character->getAvatar() != 'default.png' && Storage::disk('public')->exists('character_avatars/' . $character->getAvatar())) {
-            Storage::disk('public')->delete('character_avatars/' . $character->getAvatar());
+        if ($character->hasAvatar()) {
+            Storage::disk('public')->delete('character_avatars/' . $character->getAvatarFilename());
         }
 
         Storage::disk('public')->putFile('character_avatars', $request->file('avatar'));
@@ -46,5 +47,26 @@ class CharacterAvatarController extends Controller
         $character->save();
 
         return redirect()->back();
+    }
+
+    /**
+     * Delete the avatar for the character.
+     *
+     * @param Character $character
+     */
+    public function delete(Character $character)
+    {
+
+        if ($character->hasAvatar()) {
+
+            Storage::disk('public')->delete('character_avatars/' . $character->getAvatarFilename());
+
+            $character->avatar = NULL;
+            $character->save();
+
+        }
+
+        return redirect()->back();
+
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Unit;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class UnitController extends Controller
@@ -46,7 +46,8 @@ class UnitController extends Controller
      */
     public function show(Unit $unit)
     {
-        //
+
+        return view('units.show')->with(['unit' => $unit]);
     }
 
     /**

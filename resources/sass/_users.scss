@@ -1,4 +1,12 @@
 img.user-avatar {
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 60px;
+  max-height: 60px;
+}
+
+img.user-avatar-large {
+    max-height: 300px;
+}
+
+ul.list-group.user-list > li.list-group-item.row {
+    display: flex;
 }

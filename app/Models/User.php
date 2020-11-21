@@ -67,7 +67,7 @@ class User extends Authenticatable
     return $this->hasMany('App\Models\Character')->where('active', true);
   }
 
-  public function active_character()
+  public function activeCharacter()
   {
 
     if ($this->active_character == null) {
@@ -110,5 +110,47 @@ class User extends Authenticatable
   {
     return Carbon::parse($value)->format('d.m.Y') . " (" . Carbon::parse($value)->age . ")";
   }
+
+    /**
+     * @return bool
+     */
+    public function hasAvatar()
+    {
+        if($this->avatar && Storage::disk('public')->exists('user_avatars/' . $this->avatar)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatarPath()
+    {
+
+        if($this->hasAvatar()) {
+            return Storage::disk('public')->url('user_avatars/' . $this->avatar);
+        }
+
+        return Storage::disk('public')->url('user_avatars/default.png');
+
+    }
+
+    /**
+     * @return mixed|string
+     */
+    public function getAvatarFilename()
+    {
+
+        if($this->hasAvatar()) {
+
+            return $this->avatar;
+
+        }
+
+        return 'default.png';
+
+    }
 
 }

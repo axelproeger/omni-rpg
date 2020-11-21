@@ -2,6 +2,8 @@
 .sidebar {
   width: $sidebar-collapsed-width;
   min-height: 100vh;
+    background: #0a3d62;
+
   .nav-item {
     position: relative;
     &:last-child {
@@ -127,7 +129,7 @@
   .sidebar-heading {
     text-align: center;
     padding: 0 1rem;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 0.65rem;
     @extend .text-uppercase;
   }
